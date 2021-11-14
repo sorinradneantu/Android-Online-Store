@@ -7,6 +7,8 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import com.example.android_online_store.R
+import com.example.android_online_store.project.controllers.FirestoreController
+import com.example.android_online_store.project.models.User
 import com.google.firebase.auth.FirebaseAuth
 
 class LoginActivity : AppCompatActivity() {
@@ -43,6 +45,7 @@ class LoginActivity : AppCompatActivity() {
                     .addOnCompleteListener{ task->
                         if(task.isSuccessful){
                             Toast.makeText(this, "Logged in !", Toast.LENGTH_SHORT).show();
+                            FirestoreController().getAttributes(this@LoginActivity)
                         }else{
                             Toast.makeText(this, "Log in failed : "+task.exception!!.message.toString(), Toast.LENGTH_SHORT).show();
                         }
@@ -56,5 +59,19 @@ class LoginActivity : AppCompatActivity() {
         }
 
     }
+
+    fun loginSuccessfully(user: User){
+
+        val mainActivity = Intent(this@LoginActivity, MainActivity::class.java).apply {
+
+        }
+        startActivity(mainActivity)
+        finish()
+    }
+
+    fun loginFailed(){
+
+    }
+
 
 }
