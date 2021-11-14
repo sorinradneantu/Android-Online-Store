@@ -7,6 +7,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import com.example.android_online_store.R
+import com.example.android_online_store.project.controllers.FirestoreController
 import com.example.android_online_store.project.models.User
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.auth.AuthResult
@@ -60,14 +61,14 @@ class RegisterActivity : AppCompatActivity() {
                                                 OnCompleteListener<AuthResult>{ task ->
                                                     if(task.isSuccessful){
 
-                                                        Toast.makeText(this, "Registered successfully !", Toast.LENGTH_SHORT).show();
-
                                                         val firebaseUser: FirebaseUser = task.result!!.user!!
 
-                                                        FirebaseAuth.getInstance().signOut();
+                                                        val user = User(firstName.text.toString(),lastName.text.toString(),email.text.toString(),phone.text.toString(),address.text.toString(),firebaseUser.uid)
 
-                                                        goToLogin()
-                                                        finish()
+                                                        FirestoreController().addNewUser(this@RegisterActivity, user)
+
+                                                        //FirebaseAuth.getInstance().signOut();
+
 
                                                     }else{
                                                         Toast.makeText(this, "Register failed : " + task.exception!!.message.toString(), Toast.LENGTH_SHORT).show();
@@ -100,6 +101,16 @@ class RegisterActivity : AppCompatActivity() {
         }else{
             Toast.makeText(this, "First Name is missing !", Toast.LENGTH_SHORT).show();
         }
+
+    }
+
+    fun registeredSuccessfully(){
+        Toast.makeText(this, "Registered successfully !", Toast.LENGTH_SHORT).show();
+        goToLogin()
+        finish()
+    }
+
+    fun registerFailed(){
 
     }
 
