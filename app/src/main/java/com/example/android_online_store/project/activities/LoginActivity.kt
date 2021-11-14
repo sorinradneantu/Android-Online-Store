@@ -1,4 +1,4 @@
-package com.example.android_online_store.activities
+package com.example.android_online_store.project.activities
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
