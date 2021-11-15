@@ -130,7 +130,7 @@
                 android:id="@+id/signoutbtn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="SIGN OUT" />
+                android:text="LOG OUT" />
 
             <Space
                 android:layout_width="match_parent"
