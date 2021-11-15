@@ -118,13 +118,23 @@
 
             <Space
                 android:layout_width="match_parent"
-                android:layout_height="111dp" />
+                android:layout_height="66dp" />
 
             <ImageView
                 android:id="@+id/imageView3"
                 android:layout_width="match_parent"
                 android:layout_height="222dp"
                 android:src="@drawable/design1" />
+
+            <Button
+                android:id="@+id/signoutbtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="SIGN OUT" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="109dp" />
         </LinearLayout>
     </ScrollView>
 
