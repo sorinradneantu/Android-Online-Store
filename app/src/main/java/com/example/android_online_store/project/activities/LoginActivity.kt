@@ -62,7 +62,7 @@ class LoginActivity : AppCompatActivity() {
 
     fun loginSuccessfully(user: User){
 
-        val mainActivity = Intent(this@LoginActivity, MainActivity::class.java).apply {
+        val mainActivity = Intent(this@LoginActivity, DashboardActivity::class.java).apply {
 
         }
         startActivity(mainActivity)
