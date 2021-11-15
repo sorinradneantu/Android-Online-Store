@@ -1,17 +1,23 @@
-package com.example.android_online_store.project.activities.ui.home
+package com.example.android_online_store.project.activities.ui.products
 
+import android.content.Intent
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
+import com.example.android_online_store.R
 import com.example.android_online_store.databinding.FragmentProductsBinding
+import com.example.android_online_store.project.activities.NewProductActivity
+import com.example.android_online_store.project.activities.SettingsActivity
 
 
 class ProductsFragment : Fragment() {
+
+
+    override fun onCreate(savedInstanceState: Bundle?){
+        super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
+    }
 
     //private lateinit var homeViewModel: HomeViewModel
     private var _binding: FragmentProductsBinding? = null
@@ -41,4 +47,26 @@ class ProductsFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.new_product_menu,menu)
+        super.onCreateOptionsMenu(menu, inflater)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+
+        val id = item.itemId
+
+        when(id){
+            R.id.action_newproduct -> {
+
+                startActivity(Intent(activity, NewProductActivity::class.java))
+
+                return true
+
+            }
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
 }
