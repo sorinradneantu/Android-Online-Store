@@ -1,4 +1,4 @@
-package com.example.android_online_store.project.activities.ui.home
+package com.example.android_online_store.project.activities.ui.products
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
