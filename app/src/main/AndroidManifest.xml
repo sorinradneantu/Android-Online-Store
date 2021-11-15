@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AndroidOnlineStore">
         <activity
+            android:name=".project.activities.SettingsActivity"
+            android:exported="false" />
+        <activity
             android:name=".project.activities.DashboardActivity"
             android:exported="false"
             android:label="@string/title_activity_dashboard" />
