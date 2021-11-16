@@ -6,4 +6,127 @@
     android:layout_height="match_parent"
     tools:context=".project.activities.NewProductActivity">
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="42dp" />
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Add a new product :"
+                android:textSize="30sp"
+                android:textStyle="bold" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="42dp" />
+
+            <EditText
+                android:id="@+id/editTextTextPersonName2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Product Name"
+                android:inputType="textPersonName" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="42dp" />
+
+            <EditText
+                android:id="@+id/editTextNumberDecimal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Price"
+                android:inputType="numberDecimal" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="42dp" />
+
+            <EditText
+                android:id="@+id/editTextTextPersonName4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Description"
+                android:inputType="textPersonName" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="42dp" />
+
+            <EditText
+                android:id="@+id/editTextNumberDecimal2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Quantity"
+                android:inputType="numberDecimal" />
+
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="42dp" />
+
+            <FrameLayout
+                android:id="@+id/fl_product_image"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:id="@+id/iv_product_image"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#E1E1E1"
+                    android:contentDescription="Add an image"
+                    android:scaleType="fitXY" />
+
+                <ImageView
+                    android:id="@+id/iv_add_update_product"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end|bottom"
+                    android:contentDescription="Add an image"
+                    android:foreground="?attr/selectableItemBackgroundBorderless"
+                    android:padding="16dp"
+                    android:src="@drawable/ic_baseline_add_a_photo_24" />
+
+            </FrameLayout>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="42dp" />
+
+            <Button
+                android:id="@+id/add_product_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="FINISH" />
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="42dp" />
+
+
+        </LinearLayout>
+    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
