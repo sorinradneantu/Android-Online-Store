@@ -5,6 +5,7 @@ import android.app.Activity
 import android.app.DownloadManager
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
@@ -16,6 +17,7 @@ import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.example.android_online_store.R
+import com.example.android_online_store.project.controllers.FirestoreController
 import com.example.android_online_store.project.glide.GlideLoader
 import com.example.android_online_store.project.others.RequestCodes
 import com.example.android_online_store.project.others.RequestCodes.PICK_IMAGE_REQUEST_CODE
@@ -23,30 +25,40 @@ import java.io.IOException
 
 class NewProductActivity : AppCompatActivity(), View.OnClickListener {
 
+    private var mSelectedImageFileUri: Uri? = null
+
+    private var mProductImageURL: String = ""
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_new_product)
 
         val add_product = findViewById<ImageView>(R.id.iv_add_update_product)
         add_product.setOnClickListener(this)
+
+        val finish_button = findViewById<Button>(R.id.finish_button)
+        finish_button.setOnClickListener { uploadProductImage() }
     }
 
     override fun onClick(v: View?) {
         if(v != null){
             when(v.id){
-                R.id.iv_add_update_product ->
-                    if(ContextCompat.checkSelfPermission(
+                R.id.iv_add_update_product -> {
+                    if (ContextCompat.checkSelfPermission(
                             this,
                             Manifest.permission.READ_EXTERNAL_STORAGE
-                    )== PackageManager.PERMISSION_GRANTED){
-                       showImageChooser(this@NewProductActivity)
-                    }else{
+                        ) == PackageManager.PERMISSION_GRANTED
+                    ) {
+                        showImageChooser(this@NewProductActivity)
+                    } else {
                         ActivityCompat.requestPermissions(
                             this,
                             arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE),
                             RequestCodes.READ_STORAGE_PERMISSION_CODE
                         )
                     }
+                }
+
             }
         }
     }
@@ -90,10 +102,10 @@ class NewProductActivity : AppCompatActivity(), View.OnClickListener {
                     val product_image = findViewById<ImageView>(R.id.iv_product_image)
                     add_product.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_baseline_edit_24))
 
-                    val selectedImageFileURI = data.data!!
+                     mSelectedImageFileUri = data.data!!
 
                     try{
-                        GlideLoader(this).loadUserPicture(selectedImageFileURI, product_image)
+                        GlideLoader(this).loadUserPicture(mSelectedImageFileUri!!, product_image)
                     }catch(e: IOException){
                         e.printStackTrace()
                     }
@@ -104,4 +116,17 @@ class NewProductActivity : AppCompatActivity(), View.OnClickListener {
         }
     }
 
+    fun imageUploadSuccess(imageURL: String){
+        Toast.makeText(this, "Image uploaded successfully !", Toast.LENGTH_SHORT).show();
+    }
+
+    fun imageUploadFailed(){
+        Toast.makeText(this, "Image upload failed !", Toast.LENGTH_SHORT).show();
+    }
+
+    private fun uploadProductImage(){
+
+        FirestoreController().uploadImageToCloudStorage(this, mSelectedImageFileUri,"Product_Image");
+
+    }
 }
