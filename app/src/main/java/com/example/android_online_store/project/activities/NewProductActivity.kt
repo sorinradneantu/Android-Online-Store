@@ -16,6 +16,7 @@ import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.example.android_online_store.R
+import com.example.android_online_store.project.glide.GlideLoader
 import com.example.android_online_store.project.others.RequestCodes
 import com.example.android_online_store.project.others.RequestCodes.PICK_IMAGE_REQUEST_CODE
 import java.io.IOException
@@ -92,7 +93,7 @@ class NewProductActivity : AppCompatActivity(), View.OnClickListener {
                     val selectedImageFileURI = data.data!!
 
                     try{
-                        //GlideLoader(this).loadUserPicture(selectedImageFileURI, product_image)
+                        GlideLoader(this).loadUserPicture(selectedImageFileURI, product_image)
                     }catch(e: IOException){
                         e.printStackTrace()
                     }
