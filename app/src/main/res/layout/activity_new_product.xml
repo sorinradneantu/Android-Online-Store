@@ -36,7 +36,7 @@
                 android:layout_height="42dp" />
 
             <EditText
-                android:id="@+id/editTextTextPersonName2"
+                android:id="@+id/productNameInput"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
@@ -48,7 +48,7 @@
                 android:layout_height="42dp" />
 
             <EditText
-                android:id="@+id/editTextNumberDecimal"
+                android:id="@+id/priceInput"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
@@ -60,7 +60,7 @@
                 android:layout_height="42dp" />
 
             <EditText
-                android:id="@+id/editTextTextPersonName4"
+                android:id="@+id/descriptionInput"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
@@ -72,7 +72,7 @@
                 android:layout_height="42dp" />
 
             <EditText
-                android:id="@+id/editTextNumberDecimal2"
+                android:id="@+id/quantityInput"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"

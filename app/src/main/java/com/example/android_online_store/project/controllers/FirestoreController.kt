@@ -9,6 +9,7 @@ import android.webkit.MimeTypeMap
 import com.example.android_online_store.project.activities.LoginActivity
 import com.example.android_online_store.project.activities.NewProductActivity
 import com.example.android_online_store.project.activities.RegisterActivity
+import com.example.android_online_store.project.models.Product
 import com.example.android_online_store.project.models.User
 import com.google.android.gms.common.internal.Constants
 import com.google.common.io.Files.getFileExtension
@@ -82,6 +83,10 @@ class FirestoreController {
                 editor.putString(
                     "phoneNr_logged",
                     "${user.phoneNumber}"
+                )
+                editor.putString(
+                    "username_logged",
+                    "${user.firstName} ${user.lastName}"
                 )
                 editor.apply()
 
@@ -158,6 +163,21 @@ class FirestoreController {
             .getExtensionFromMimeType(activity.contentResolver.getType(uri!!))
     }
 
+
+
+    fun addProduct(activity: NewProductActivity,product: Product){
+
+        db.collection("products")
+            .document()
+            .set(product, SetOptions.merge())
+            .addOnSuccessListener {
+                activity.productUploadSuccess()
+            }
+            .addOnFailureListener {
+                activity.productUploadFail()
+            }
+
+    }
 
 
 
