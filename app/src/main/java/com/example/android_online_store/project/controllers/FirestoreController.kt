@@ -6,13 +6,13 @@ import android.content.SharedPreferences
 import android.net.Uri
 import android.util.Log
 import android.webkit.MimeTypeMap
+import androidx.fragment.app.Fragment
 import com.example.android_online_store.project.activities.LoginActivity
 import com.example.android_online_store.project.activities.NewProductActivity
 import com.example.android_online_store.project.activities.RegisterActivity
+import com.example.android_online_store.project.activities.ui.products.ProductsFragment
 import com.example.android_online_store.project.models.Product
 import com.example.android_online_store.project.models.User
-import com.google.android.gms.common.internal.Constants
-import com.google.common.io.Files.getFileExtension
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.SetOptions
@@ -180,5 +180,27 @@ class FirestoreController {
     }
 
 
+    fun getProductsList(fragment: Fragment){
+        db.collection("products")
+            .whereEqualTo("owner_id",getId())
+            .get()
+            .addOnSuccessListener { document ->
+
+                val prodList: ArrayList<Product> = ArrayList()
+
+                for(index in document.documents){
+                    val prod = index.toObject(Product::class.java)
+                    prod!!.prod_id = index.id
+
+                    prodList.add(prod)
+                }
+
+                when(fragment){
+                    is ProductsFragment ->
+                        fragment.successGetProdFromDB(prodList)
+                }
+
+            }
+    }
 
 }

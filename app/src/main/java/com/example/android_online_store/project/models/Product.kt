@@ -3,7 +3,7 @@ package com.example.android_online_store.project.models
 class Product(
 
     // product attributes
-    var id: String = "",
+    var prod_id: String = "",
     val product_name: String = "",
     val price: String = "",
     val description: String = "",

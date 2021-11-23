@@ -39,7 +39,7 @@ class DashboardFragment : Fragment() {
 
         val textView: TextView = binding.textDashboard
 
-            textView.text = "This is dashboard Fragment"
+            textView.text = "// TO DO : Display all products"
 
         return root
 

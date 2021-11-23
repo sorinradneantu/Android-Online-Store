@@ -71,7 +71,7 @@ class UserProfileFragment : Fragment() {
     private fun signOut(){
         goToLogin();
         FirebaseAuth.getInstance().signOut();
-        Toast.makeText(activity,"You are signed out !",Toast.LENGTH_SHORT).show();
+        Toast.makeText(activity,"You are logged out !",Toast.LENGTH_SHORT).show();
     }
 
     private fun goToLogin() {
