@@ -3,12 +3,19 @@ package com.example.android_online_store.project.activities.ui.products
 import android.content.Intent
 import android.os.Bundle
 import android.view.*
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.android_online_store.R
 import com.example.android_online_store.databinding.FragmentProductsBinding
 import com.example.android_online_store.project.activities.NewProductActivity
 import com.example.android_online_store.project.activities.SettingsActivity
+import com.example.android_online_store.project.adapters.ProductsListAdapter
+import com.example.android_online_store.project.controllers.FirestoreController
+import com.example.android_online_store.project.models.Product
 
 
 class ProductsFragment : Fragment() {
@@ -30,15 +37,12 @@ class ProductsFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
+
     ): View? {
         //homeViewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
 
         _binding = FragmentProductsBinding.inflate(inflater, container, false)
         val root: View = binding.root
-
-        val textView: TextView = binding.textHome
-
-            textView.text = "This is home Fragment"
 
         return root
     }
@@ -46,6 +50,11 @@ class ProductsFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    override fun onResume(){
+        super.onResume()
+        getProdListFromDB()
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -67,6 +76,35 @@ class ProductsFragment : Fragment() {
             }
         }
         return super.onOptionsItemSelected(item)
+    }
+
+
+    private fun getProdListFromDB(){
+
+        FirestoreController().getProductsList(this)
+
+    }
+
+
+    fun successGetProdFromDB(prodList: ArrayList<Product>){
+
+        val rv: RecyclerView = binding.rvMyProductItems
+        val tv: TextView = binding.tvNoProductsFound
+
+        if(prodList.size > 0){
+
+            rv.visibility = View.VISIBLE
+            tv.visibility = View.GONE
+
+            rv.layoutManager = LinearLayoutManager(activity)
+            rv.setHasFixedSize(true)
+            val adapter = ProductsListAdapter(requireActivity(), prodList)
+            rv.adapter = adapter
+        }else{
+            rv.visibility = View.GONE
+            tv.visibility = View.VISIBLE
+        }
+
     }
 
 }

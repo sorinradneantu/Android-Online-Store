@@ -9,13 +9,26 @@ import java.io.IOException
 
 class GlideLoader(val context: Context) {
 
-    fun loadUserPicture(imageURI: Uri, imageView: ImageView){
+    fun loadUserPicture(imageURI: Any, imageView: ImageView){
 
         try{
             Glide.with(context)
                 .load(imageURI)
                 .centerCrop()
                 .placeholder(R.drawable.ic_baseline_broken_image_24)
+                .into(imageView)
+        }catch (e: IOException){
+            e.printStackTrace()
+        }
+
+    }
+
+    fun loadProdImage(imageURI: Any, imageView: ImageView){
+
+        try{
+            Glide.with(context)
+                .load(imageURI)
+                .centerCrop()
                 .into(imageView)
         }catch (e: IOException){
             e.printStackTrace()
