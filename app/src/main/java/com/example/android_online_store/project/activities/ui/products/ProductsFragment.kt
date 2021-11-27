@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.*
 import android.widget.LinearLayout
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -98,13 +99,22 @@ class ProductsFragment : Fragment() {
 
             rv.layoutManager = LinearLayoutManager(activity)
             rv.setHasFixedSize(true)
-            val adapter = ProductsListAdapter(requireActivity(), prodList)
+            val adapter = ProductsListAdapter(requireActivity(), prodList, this)
             rv.adapter = adapter
         }else{
             rv.visibility = View.GONE
             tv.visibility = View.VISIBLE
         }
 
+    }
+
+    fun deleteProduct(prodID: String){
+        FirestoreController().deleteProd(this, prodID)
+    }
+
+    fun prodDeleteSuccess(){
+        Toast.makeText(requireActivity(),"Product deleted successfully !",Toast.LENGTH_SHORT).show()
+        getProdListFromDB()
     }
 
 }

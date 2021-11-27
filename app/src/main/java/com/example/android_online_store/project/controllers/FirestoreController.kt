@@ -223,4 +223,13 @@ class FirestoreController {
 
     }
 
+    fun deleteProd(fragment: ProductsFragment, prodId: String){
+        db.collection("products")
+            .document(prodId)
+            .delete()
+            .addOnSuccessListener {
+                fragment.prodDeleteSuccess()
+            }
+    }
+
 }

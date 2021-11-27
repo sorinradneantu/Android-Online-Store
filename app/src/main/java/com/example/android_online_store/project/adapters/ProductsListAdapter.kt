@@ -8,12 +8,13 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.android_online_store.R
+import com.example.android_online_store.project.activities.ui.products.ProductsFragment
 import com.example.android_online_store.project.glide.GlideLoader
 import com.example.android_online_store.project.models.Product
 
 
 
-open class ProductsListAdapter(val context: Context, var prodlist: ArrayList<Product>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+open class ProductsListAdapter(val context: Context, var prodlist: ArrayList<Product>,val fragment: ProductsFragment) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     override fun onCreateViewHolder(parent:ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return MyViewHolder(LayoutInflater.from(context).inflate(R.layout.product_list_layout,parent,false))
@@ -29,6 +30,10 @@ open class ProductsListAdapter(val context: Context, var prodlist: ArrayList<Pro
             holder.itemView.findViewById<TextView>(R.id.tv_item_name).text = model.product_name
             holder.itemView.findViewById<TextView>(R.id.tv_item_price).text = "${model.price} $"
             holder.itemView.findViewById<TextView>(R.id.tv_item_description).text = model.description
+
+            holder.itemView.findViewById<ImageView>(R.id.ib_delete_product).setOnClickListener{
+                fragment.deleteProduct(model.prod_id)
+            }
         }
 
     }
