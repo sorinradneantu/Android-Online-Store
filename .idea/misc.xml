@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/UPT/Anul4_CTI_RO/Anul4_Sem1_CTI-RO/CTI_SMA_Anul4_Sem1/Android-Online-Store/app/src/main/res/drawable-v24/app_gradient_color_background.xml" value="0.1" />
         <entry key="..\:/UPT/Anul4_CTI_RO/Anul4_Sem1_CTI-RO/CTI_SMA_Anul4_Sem1/Android-Online-Store/app/src/main/res/drawable-v24/ic_vector_products.xml" value="0.1359375" />
         <entry key="..\:/UPT/Anul4_CTI_RO/Anul4_Sem1_CTI-RO/CTI_SMA_Anul4_Sem1/Android-Online-Store/app/src/main/res/drawable/ic_dashboard_black_24dp.xml" value="0.1" />
         <entry key="..\:/UPT/Anul4_CTI_RO/Anul4_Sem1_CTI-RO/CTI_SMA_Anul4_Sem1/Android-Online-Store/app/src/main/res/drawable/ic_home_black_24dp.xml" value="0.1" />
@@ -14,13 +15,14 @@
         <entry key="..\:/UPT/Anul4_CTI_RO/Anul4_Sem1_CTI-RO/CTI_SMA_Anul4_Sem1/Android-Online-Store/app/src/main/res/layout/activity_login.xml" value="0.11302083333333333" />
         <entry key="..\:/UPT/Anul4_CTI_RO/Anul4_Sem1_CTI-RO/CTI_SMA_Anul4_Sem1/Android-Online-Store/app/src/main/res/layout/activity_main.xml" value="0.264" />
         <entry key="..\:/UPT/Anul4_CTI_RO/Anul4_Sem1_CTI-RO/CTI_SMA_Anul4_Sem1/Android-Online-Store/app/src/main/res/layout/activity_new_product.xml" value="0.2" />
+        <entry key="..\:/UPT/Anul4_CTI_RO/Anul4_Sem1_CTI-RO/CTI_SMA_Anul4_Sem1/Android-Online-Store/app/src/main/res/layout/activity_product_window.xml" value="0.256140350877193" />
         <entry key="..\:/UPT/Anul4_CTI_RO/Anul4_Sem1_CTI-RO/CTI_SMA_Anul4_Sem1/Android-Online-Store/app/src/main/res/layout/activity_register.xml" value="0.12708333333333333" />
         <entry key="..\:/UPT/Anul4_CTI_RO/Anul4_Sem1_CTI-RO/CTI_SMA_Anul4_Sem1/Android-Online-Store/app/src/main/res/layout/dashboard_products_layout.xml" value="0.1" />
         <entry key="..\:/UPT/Anul4_CTI_RO/Anul4_Sem1_CTI-RO/CTI_SMA_Anul4_Sem1/Android-Online-Store/app/src/main/res/layout/fragment_base.xml" value="0.1" />
         <entry key="..\:/UPT/Anul4_CTI_RO/Anul4_Sem1_CTI-RO/CTI_SMA_Anul4_Sem1/Android-Online-Store/app/src/main/res/layout/fragment_dashboard.xml" value="0.12708333333333333" />
         <entry key="..\:/UPT/Anul4_CTI_RO/Anul4_Sem1_CTI-RO/CTI_SMA_Anul4_Sem1/Android-Online-Store/app/src/main/res/layout/fragment_products.xml" value="0.1" />
         <entry key="..\:/UPT/Anul4_CTI_RO/Anul4_Sem1_CTI-RO/CTI_SMA_Anul4_Sem1/Android-Online-Store/app/src/main/res/layout/fragment_userprofile.xml" value="0.2371234207968902" />
-        <entry key="..\:/UPT/Anul4_CTI_RO/Anul4_Sem1_CTI-RO/CTI_SMA_Anul4_Sem1/Android-Online-Store/app/src/main/res/layout/product_list_layout.xml" value="0.1" />
+        <entry key="..\:/UPT/Anul4_CTI_RO/Anul4_Sem1_CTI-RO/CTI_SMA_Anul4_Sem1/Android-Online-Store/app/src/main/res/layout/product_list_layout.xml" value="0.536" />
         <entry key="..\:/UPT/Anul4_CTI_RO/Anul4_Sem1_CTI-RO/CTI_SMA_Anul4_Sem1/Android-Online-Store/app/src/main/res/menu/bottom_nav_menu.xml" value="0.264" />
         <entry key="..\:/UPT/Anul4_CTI_RO/Anul4_Sem1_CTI-RO/CTI_SMA_Anul4_Sem1/Android-Online-Store/app/src/main/res/menu/dashboard_menu.xml" value="0.1" />
         <entry key="..\:/UPT/Anul4_CTI_RO/Anul4_Sem1_CTI-RO/CTI_SMA_Anul4_Sem1/Android-Online-Store/app/src/main/res/menu/product_menu.xml" value="0.1234375" />

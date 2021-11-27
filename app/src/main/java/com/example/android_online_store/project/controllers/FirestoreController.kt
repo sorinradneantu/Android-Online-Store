@@ -9,6 +9,7 @@ import android.webkit.MimeTypeMap
 import androidx.fragment.app.Fragment
 import com.example.android_online_store.project.activities.LoginActivity
 import com.example.android_online_store.project.activities.NewProductActivity
+import com.example.android_online_store.project.activities.ProductWindowActivity
 import com.example.android_online_store.project.activities.RegisterActivity
 import com.example.android_online_store.project.activities.ui.dashboard.DashboardFragment
 import com.example.android_online_store.project.activities.ui.products.ProductsFragment
@@ -221,6 +222,32 @@ class FirestoreController {
 
             }
 
+    }
+
+    fun deleteProd(fragment: ProductsFragment, prodId: String){
+        db.collection("products")
+            .document(prodId)
+            .delete()
+            .addOnSuccessListener {
+                fragment.prodDeleteSuccess()
+            }
+    }
+
+    fun getProductDetails(activity: ProductWindowActivity, productId: String){
+        db.collection("products")
+            .document(productId)
+            .get()
+            .addOnSuccessListener { document ->
+
+                val product = document.toObject(Product::class.java)
+
+                if (product != null) {
+                    activity.getDetailsSuccess(product)
+                }
+
+            }.addOnFailureListener {
+                e -> Log.e(activity.javaClass.simpleName, "error :",e)
+            }
     }
 
 }
