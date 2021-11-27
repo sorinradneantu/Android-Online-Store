@@ -41,6 +41,7 @@ open class ProductsListAdapter(val context: Context, var prodlist: ArrayList<Pro
             holder.itemView.setOnClickListener {
                 val productWindow = Intent(context, ProductWindowActivity::class.java)
                 productWindow.putExtra("ProductID",model.prod_id)
+                productWindow.putExtra("OwnerID",model.owner_id)
                 context.startActivity(productWindow)
             }
         }
