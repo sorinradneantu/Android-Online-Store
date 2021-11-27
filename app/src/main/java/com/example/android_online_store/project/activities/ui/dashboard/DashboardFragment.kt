@@ -7,9 +7,15 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.android_online_store.R
 import com.example.android_online_store.databinding.FragmentDashboardBinding
 import com.example.android_online_store.project.activities.SettingsActivity
+import com.example.android_online_store.project.adapters.AllProductsListAdapter
+import com.example.android_online_store.project.adapters.ProductsListAdapter
+import com.example.android_online_store.project.controllers.FirestoreController
+import com.example.android_online_store.project.models.Product
 
 class DashboardFragment : Fragment() {
 
@@ -20,6 +26,11 @@ class DashboardFragment : Fragment() {
         setHasOptionsMenu(true)
     }
 
+    override fun onResume() {
+        super.onResume()
+
+        getAllProductsList()
+    }
 
     private var _binding: FragmentDashboardBinding? = null
 
@@ -37,9 +48,6 @@ class DashboardFragment : Fragment() {
         _binding = FragmentDashboardBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textDashboard
-
-            textView.text = "// TO DO : Display all products"
 
         return root
 
@@ -70,4 +78,31 @@ class DashboardFragment : Fragment() {
         }
         return super.onOptionsItemSelected(item)
     }
+
+    fun successGetAllProductsList(dashboardProductsList: ArrayList<Product>){
+
+        val rv: RecyclerView = binding.rvDashboardItems
+        val tv: TextView = binding.tvNoDashboardItemsFound
+
+
+        if(dashboardProductsList.size > 0){
+            tv.visibility = View.GONE
+            rv.visibility = View.VISIBLE
+
+            rv.layoutManager = LinearLayoutManager(activity)
+            rv.setHasFixedSize(true)
+            val adapter = AllProductsListAdapter(requireActivity(), dashboardProductsList)
+            rv.adapter = adapter
+
+        }else{
+            rv.visibility = View.GONE
+            tv.visibility = View.VISIBLE
+        }
+
+    }
+
+    private fun getAllProductsList(){
+        FirestoreController().getAllProductsList(this@DashboardFragment)
+    }
+
 }

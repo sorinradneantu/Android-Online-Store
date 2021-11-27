@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import com.example.android_online_store.project.activities.LoginActivity
 import com.example.android_online_store.project.activities.NewProductActivity
 import com.example.android_online_store.project.activities.RegisterActivity
+import com.example.android_online_store.project.activities.ui.dashboard.DashboardFragment
 import com.example.android_online_store.project.activities.ui.products.ProductsFragment
 import com.example.android_online_store.project.models.Product
 import com.example.android_online_store.project.models.User
@@ -201,6 +202,25 @@ class FirestoreController {
                 }
 
             }
+    }
+
+    fun getAllProductsList(fragment: DashboardFragment){
+        db.collection("products")
+            .get()
+            .addOnSuccessListener { document ->
+
+                val allProdList: ArrayList<Product> = ArrayList()
+
+                for(index in document.documents){
+                    val prod = index.toObject(Product::class.java)!!
+                    prod.prod_id = index.id
+                    allProdList.add(prod)
+                }
+
+                fragment.successGetAllProductsList(allProdList)
+
+            }
+
     }
 
 }
