@@ -4,14 +4,18 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/UPT/Anul4_CTI_RO/Anul4_Sem1_CTI-RO/CTI_SMA_Anul4_Sem1/Android-Online-Store/app/src/main/res/drawable-v24/ic_vector_products.xml" value="0.1359375" />
+        <entry key="..\:/UPT/Anul4_CTI_RO/Anul4_Sem1_CTI-RO/CTI_SMA_Anul4_Sem1/Android-Online-Store/app/src/main/res/drawable/ic_dashboard_black_24dp.xml" value="0.1" />
+        <entry key="..\:/UPT/Anul4_CTI_RO/Anul4_Sem1_CTI-RO/CTI_SMA_Anul4_Sem1/Android-Online-Store/app/src/main/res/drawable/ic_home_black_24dp.xml" value="0.1" />
         <entry key="..\:/UPT/Anul4_CTI_RO/Anul4_Sem1_CTI-RO/CTI_SMA_Anul4_Sem1/Android-Online-Store/app/src/main/res/drawable/ic_notifications_black_24dp.xml" value="0.14322916666666666" />
         <entry key="..\:/UPT/Anul4_CTI_RO/Anul4_Sem1_CTI-RO/CTI_SMA_Anul4_Sem1/Android-Online-Store/app/src/main/res/drawable/ic_vector_delete.xml" value="0.1" />
+        <entry key="..\:/UPT/Anul4_CTI_RO/Anul4_Sem1_CTI-RO/CTI_SMA_Anul4_Sem1/Android-Online-Store/app/src/main/res/drawable/item_dashboard_background.xml" value="0.1" />
         <entry key="..\:/UPT/Anul4_CTI_RO/Anul4_Sem1_CTI-RO/CTI_SMA_Anul4_Sem1/Android-Online-Store/app/src/main/res/drawable/item_image_background.xml" value="0.14074074074074075" />
         <entry key="..\:/UPT/Anul4_CTI_RO/Anul4_Sem1_CTI-RO/CTI_SMA_Anul4_Sem1/Android-Online-Store/app/src/main/res/layout/activity_dashboard.xml" value="0.2" />
         <entry key="..\:/UPT/Anul4_CTI_RO/Anul4_Sem1_CTI-RO/CTI_SMA_Anul4_Sem1/Android-Online-Store/app/src/main/res/layout/activity_login.xml" value="0.11302083333333333" />
         <entry key="..\:/UPT/Anul4_CTI_RO/Anul4_Sem1_CTI-RO/CTI_SMA_Anul4_Sem1/Android-Online-Store/app/src/main/res/layout/activity_main.xml" value="0.264" />
         <entry key="..\:/UPT/Anul4_CTI_RO/Anul4_Sem1_CTI-RO/CTI_SMA_Anul4_Sem1/Android-Online-Store/app/src/main/res/layout/activity_new_product.xml" value="0.2" />
         <entry key="..\:/UPT/Anul4_CTI_RO/Anul4_Sem1_CTI-RO/CTI_SMA_Anul4_Sem1/Android-Online-Store/app/src/main/res/layout/activity_register.xml" value="0.12708333333333333" />
+        <entry key="..\:/UPT/Anul4_CTI_RO/Anul4_Sem1_CTI-RO/CTI_SMA_Anul4_Sem1/Android-Online-Store/app/src/main/res/layout/dashboard_products_layout.xml" value="0.1" />
         <entry key="..\:/UPT/Anul4_CTI_RO/Anul4_Sem1_CTI-RO/CTI_SMA_Anul4_Sem1/Android-Online-Store/app/src/main/res/layout/fragment_base.xml" value="0.1" />
         <entry key="..\:/UPT/Anul4_CTI_RO/Anul4_Sem1_CTI-RO/CTI_SMA_Anul4_Sem1/Android-Online-Store/app/src/main/res/layout/fragment_dashboard.xml" value="0.12708333333333333" />
         <entry key="..\:/UPT/Anul4_CTI_RO/Anul4_Sem1_CTI-RO/CTI_SMA_Anul4_Sem1/Android-Online-Store/app/src/main/res/layout/fragment_products.xml" value="0.1" />
