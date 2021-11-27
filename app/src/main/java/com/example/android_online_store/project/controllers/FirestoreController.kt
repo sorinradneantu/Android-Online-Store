@@ -7,10 +7,7 @@ import android.net.Uri
 import android.util.Log
 import android.webkit.MimeTypeMap
 import androidx.fragment.app.Fragment
-import com.example.android_online_store.project.activities.LoginActivity
-import com.example.android_online_store.project.activities.NewProductActivity
-import com.example.android_online_store.project.activities.ProductWindowActivity
-import com.example.android_online_store.project.activities.RegisterActivity
+import com.example.android_online_store.project.activities.*
 import com.example.android_online_store.project.activities.ui.dashboard.DashboardFragment
 import com.example.android_online_store.project.activities.ui.products.ProductsFragment
 import com.example.android_online_store.project.models.Product
@@ -249,5 +246,7 @@ class FirestoreController {
                 e -> Log.e(activity.javaClass.simpleName, "error :",e)
             }
     }
+
+
 
 }

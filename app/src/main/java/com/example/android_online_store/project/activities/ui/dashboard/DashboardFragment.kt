@@ -5,15 +5,13 @@ import android.os.Bundle
 import android.view.*
 import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.android_online_store.R
 import com.example.android_online_store.databinding.FragmentDashboardBinding
+import com.example.android_online_store.project.activities.ProductWindowActivity
 import com.example.android_online_store.project.activities.SettingsActivity
 import com.example.android_online_store.project.adapters.AllProductsListAdapter
-import com.example.android_online_store.project.adapters.ProductsListAdapter
 import com.example.android_online_store.project.controllers.FirestoreController
 import com.example.android_online_store.project.models.Product
 
@@ -94,6 +92,15 @@ class DashboardFragment : Fragment() {
             val adapter = AllProductsListAdapter(requireActivity(), dashboardProductsList)
             rv.adapter = adapter
 
+            adapter.setOnClickListener(object: AllProductsListAdapter.OnClickListener{
+                override fun onClick(postion: Int, product: Product){
+                        val productWindow = Intent(context, ProductWindowActivity::class.java)
+                        productWindow.putExtra("ProductID",product.prod_id)
+                        productWindow.putExtra("OwnerID",product.owner_id)
+                        startActivity(productWindow)
+                }
+            })
+
         }else{
             rv.visibility = View.GONE
             tv.visibility = View.VISIBLE
@@ -104,5 +111,7 @@ class DashboardFragment : Fragment() {
     private fun getAllProductsList(){
         FirestoreController().getAllProductsList(this@DashboardFragment)
     }
+
+
 
 }
