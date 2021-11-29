@@ -1,6 +1,7 @@
 package com.example.android_online_store.project.controllers
 
 import android.app.Activity
+import android.content.Context
 import android.content.Context.MODE_PRIVATE
 import android.content.SharedPreferences
 import android.net.Uri
@@ -10,6 +11,7 @@ import androidx.fragment.app.Fragment
 import com.example.android_online_store.project.activities.*
 import com.example.android_online_store.project.activities.ui.dashboard.DashboardFragment
 import com.example.android_online_store.project.activities.ui.products.ProductsFragment
+import com.example.android_online_store.project.models.Cart_Product
 import com.example.android_online_store.project.models.Product
 import com.example.android_online_store.project.models.User
 import com.google.firebase.auth.FirebaseAuth
@@ -247,6 +249,132 @@ class FirestoreController {
             }
     }
 
+
+fun addProductToCart(activity: ProductWindowActivity, cart_product: Cart_Product){
+    db.collection("cart_items")
+        .document()
+        .set(cart_product, SetOptions.merge())
+        .addOnSuccessListener {
+            activity.productAddedToCartSuccessfully()
+        }.addOnFailureListener {
+            activity.productAddedToCartFailed()
+        }
+
+    }
+
+    fun checkProductExistInCart(activity: ProductWindowActivity, prodId:String){
+        db.collection("cart_items")
+            .whereEqualTo("user_id",getId())
+            .whereEqualTo("product_id",prodId)
+            .get()
+            .addOnSuccessListener { document ->
+                if(document.documents.size != 0){
+                    activity.prodExistAlreadyInCart()
+                }
+            }.addOnFailureListener{ e ->
+                Log.e(activity.javaClass.simpleName,"error",e)
+            }
+    }
+
+    fun getCartProducts(activity: Activity){
+        db.collection("cart_items")
+            .whereEqualTo("user_id",getId())
+            .get()
+            .addOnSuccessListener { document ->
+
+                val prodList: ArrayList<Cart_Product> = ArrayList()
+
+                for(index in document.documents){
+                    val prod = index.toObject(Cart_Product::class.java)!!
+                    prod.id = index.id
+                    prodList.add(prod)
+                }
+
+                when(activity){
+                    is CartActivity -> {
+                        activity.getCartProductsSuccessfully(prodList)
+                    }
+                }
+
+            }.addOnFailureListener {
+                when(activity){
+                    is CartActivity -> {
+                        activity.getCartProductsFailed()
+                    }
+                }
+            }
+    }
+
+    fun getAllProductsList(activity: CartActivity){
+
+        db.collection("products")
+            .get()
+            .addOnSuccessListener { document ->
+
+                val prodList: ArrayList<Product> = ArrayList()
+
+                for(index in document.documents){
+
+                    val prod = index.toObject(Product::class.java)
+                    prod!!.prod_id = index.id
+                    prodList.add(prod)
+
+                }
+
+                activity.getAllProductsFromDBSuccessfully(prodList)
+
+            }.addOnFailureListener {
+
+            }
+
+    }
+
+    fun removeProductFromCart(context: Context, id_cart: String){
+
+        db.collection("cart_items")
+            .document(id_cart)
+            .delete()
+            .addOnSuccessListener {
+                when(context){
+                    is CartActivity -> {
+                        context.productRemovedFromCartSuccessfully()
+                    }
+                }
+            }
+            .addOnFailureListener { e ->
+                when(context){
+                    is CartActivity -> {
+                        context.productRemovedFromCartFailed()
+                    }
+                }
+
+            }
+
+    }
+
+    fun updateCart(context: Context, id_cart: String, itemHashMap: HashMap<String, Any>){
+
+        db.collection("cart_items")
+            .document(id_cart)
+            .update(itemHashMap)
+            .addOnSuccessListener {
+
+                when(context){
+                    is CartActivity -> {
+                        context.updateCartSuccessfully()
+                    }
+                }
+
+            }
+            .addOnFailureListener {
+                when(context){
+                    is CartActivity -> {
+                        context.updateCartFailed()
+                    }
+                }
+            }
+
+    }
 
 
 }
