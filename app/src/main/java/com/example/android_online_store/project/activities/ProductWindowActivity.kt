@@ -10,9 +10,12 @@ import android.widget.Toast
 import com.example.android_online_store.R
 import com.example.android_online_store.project.controllers.FirestoreController
 import com.example.android_online_store.project.glide.GlideLoader
+import com.example.android_online_store.project.models.Cart_Product
 import com.example.android_online_store.project.models.Product
 
 class ProductWindowActivity : AppCompatActivity() {
+
+    private lateinit var prodDetails: Product
 
     private var prodId: String = ""
 
@@ -44,6 +47,11 @@ class ProductWindowActivity : AppCompatActivity() {
         val editButton = findViewById<Button>(R.id.btn_edit)
         editButton.setOnClickListener { editProduct() }
 
+        val addToCartButton = findViewById<Button>(R.id.btn_add_product_to_cart)
+        addToCartButton.setOnClickListener {addProductToCart()}
+
+        findViewById<TextView>(R.id.tv_already_exist).visibility = View.GONE
+
     }
 
     fun getDetailsSuccess(product: Product){
@@ -53,6 +61,18 @@ class ProductWindowActivity : AppCompatActivity() {
         findViewById<TextView>(R.id.tv_product_price).text = "${product.price} $"
         findViewById<TextView>(R.id.tv_product_description).text = product.description
         findViewById<TextView>(R.id.tv_product_quantity).text = product.quantity
+
+        if(product.quantity.toInt() == 0){
+            findViewById<Button>(R.id.btn_add_product_to_cart).visibility = View.GONE
+            findViewById<TextView>(R.id.tv_product_quantity).text = "Product not available"
+        }else{
+            if(FirestoreController().getId() != product.owner_id){
+                FirestoreController().checkProductExistInCart(this, prodId)
+            }
+        }
+
+        prodDetails = product
+
 
     }
 
@@ -64,7 +84,39 @@ class ProductWindowActivity : AppCompatActivity() {
     private fun editProduct(){
         Toast.makeText(this, "TO DO : Edit Item", Toast.LENGTH_SHORT).show();
     }
+/*
+    override fun onClick(v: View?) {
+        if(v != null){
+            when(v.id){
+                R.id.btn_add_product_to_cart -> {
+                    addProductToCart()
+                }
+            }
+        }
+    }
+*/
+    private fun addProductToCart(){
 
+        val cart_prod = Cart_Product(FirestoreController().getId(), prodId, prodDetails.product_name, prodDetails.price, prodDetails.image, "1")
+        FirestoreController().addProductToCart(this, cart_prod)
+
+    }
+
+    fun productAddedToCartSuccessfully(){
+        Toast.makeText(this, "The product was added to cart successfully!", Toast.LENGTH_SHORT).show();
+
+        findViewById<Button>(R.id.btn_add_product_to_cart).visibility = View.GONE
+        findViewById<TextView>(R.id.tv_already_exist).visibility = View.VISIBLE
+    }
+
+    fun productAddedToCartFailed(){
+        Toast.makeText(this, "The product was not added to cart !", Toast.LENGTH_SHORT).show();
+    }
+
+    fun prodExistAlreadyInCart(){
+        findViewById<Button>(R.id.btn_add_product_to_cart).visibility = View.GONE
+        findViewById<TextView>(R.id.tv_already_exist).visibility = View.VISIBLE
+    }
 
 
 }
