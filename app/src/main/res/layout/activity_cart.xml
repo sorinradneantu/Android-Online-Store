@@ -117,7 +117,7 @@
         </LinearLayout>
 
         <Button
-            android:id="@+id/btn_finish_order"
+            android:id="@+id/btn_confirm_order"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -126,7 +126,7 @@
             android:layout_marginEnd="16dp"
             android:foreground="?attr/selectableItemBackground"
             android:gravity="center"
-            android:text="FINISH"
+            android:text="confirm order"
             android:textColor="@android:color/white"
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"

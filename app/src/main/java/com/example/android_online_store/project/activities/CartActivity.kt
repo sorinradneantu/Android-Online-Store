@@ -1,9 +1,11 @@
 package com.example.android_online_store.project.activities
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
@@ -23,6 +25,10 @@ class CartActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_cart)
+
+        val goToCheckout = findViewById<Button>(R.id.btn_confirm_order)
+        goToCheckout.setOnClickListener{ goToCheckout() }
+
     }
 
     override fun onResume() {
@@ -61,7 +67,7 @@ class CartActivity : AppCompatActivity() {
 
             findViewById<RecyclerView>(R.id.rv_cart_items_list).layoutManager = LinearLayoutManager(this@CartActivity)
             findViewById<RecyclerView>(R.id.rv_cart_items_list).setHasFixedSize(true)
-            val cartListAdapter = CartListAdapter(this@CartActivity, prodList)
+            val cartListAdapter = CartListAdapter(this@CartActivity, mCartProdList, true)
             findViewById<RecyclerView>(R.id.rv_cart_items_list).adapter = cartListAdapter
 
             var price: Double = 0.0
@@ -128,5 +134,10 @@ class CartActivity : AppCompatActivity() {
 
     fun showQuantityError(){
         Toast.makeText(this, "This quantity is not available !", Toast.LENGTH_SHORT).show()
+    }
+
+    fun goToCheckout(){
+        val intent = Intent(this@CartActivity, CheckoutActivity::class.java)
+        startActivity(intent)
     }
 }
