@@ -15,7 +15,7 @@ import com.example.android_online_store.project.controllers.FirestoreController
 import com.example.android_online_store.project.glide.GlideLoader
 import com.example.android_online_store.project.models.Cart_Product
 
-open class CartListAdapter(private val context: Context, private var prodList: ArrayList<Cart_Product>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+open class CartListAdapter(private val context: Context, private var prodList: ArrayList<Cart_Product>, private val updateCartItems: Boolean) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
 
         return MyViewHolder(
@@ -40,9 +40,25 @@ open class CartListAdapter(private val context: Context, private var prodList: A
                 holder.itemView.findViewById<ImageButton>(R.id.ib_remove).visibility = View.GONE
                 holder.itemView.findViewById<ImageButton>(R.id.ib_add).visibility = View.GONE
                 holder.itemView.findViewById<TextView>(R.id.tv_cart_quantity).text = "Not available"
+
+
+                if(updateCartItems){
+                    holder.itemView.findViewById<ImageButton>(R.id.ib_delete).visibility = View.VISIBLE
+                }else{
+                    holder.itemView.findViewById<ImageButton>(R.id.ib_delete).visibility = View.GONE
+                }
+
             }else{
-                holder.itemView.findViewById<ImageButton>(R.id.ib_delete).visibility = View.VISIBLE
-                holder.itemView.findViewById<ImageButton>(R.id.ib_add).visibility = View.VISIBLE
+                if(updateCartItems){
+                    holder.itemView.findViewById<ImageButton>(R.id.ib_delete).visibility = View.VISIBLE
+                    holder.itemView.findViewById<ImageButton>(R.id.ib_add).visibility = View.VISIBLE
+                    holder.itemView.findViewById<ImageButton>(R.id.ib_remove).visibility = View.VISIBLE
+                }else{
+                    holder.itemView.findViewById<ImageButton>(R.id.ib_delete).visibility = View.GONE
+                    holder.itemView.findViewById<ImageButton>(R.id.ib_add).visibility = View.GONE
+                    holder.itemView.findViewById<ImageButton>(R.id.ib_remove).visibility = View.GONE
+                }
+
             }
 
             holder.itemView.findViewById<ImageButton>(R.id.ib_delete).setOnClickListener {

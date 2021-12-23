@@ -12,6 +12,7 @@ import com.example.android_online_store.project.activities.*
 import com.example.android_online_store.project.activities.ui.dashboard.DashboardFragment
 import com.example.android_online_store.project.activities.ui.products.ProductsFragment
 import com.example.android_online_store.project.models.Cart_Product
+import com.example.android_online_store.project.models.Order
 import com.example.android_online_store.project.models.Product
 import com.example.android_online_store.project.models.User
 import com.google.firebase.auth.FirebaseAuth
@@ -294,6 +295,9 @@ fun addProductToCart(activity: ProductWindowActivity, cart_product: Cart_Product
                     is CartActivity -> {
                         activity.getCartProductsSuccessfully(prodList)
                     }
+                    is CheckoutActivity -> {
+                        activity.successGetCartItemsList(prodList)
+                    }
                 }
 
             }.addOnFailureListener {
@@ -301,11 +305,14 @@ fun addProductToCart(activity: ProductWindowActivity, cart_product: Cart_Product
                     is CartActivity -> {
                         activity.getCartProductsFailed()
                     }
+                    is CheckoutActivity -> {
+                        activity.failedGetCartItemsList()
+                    }
                 }
             }
     }
 
-    fun getAllProductsList(activity: CartActivity){
+    fun getAllProductsList(activity: Activity){
 
         db.collection("products")
             .get()
@@ -321,7 +328,15 @@ fun addProductToCart(activity: ProductWindowActivity, cart_product: Cart_Product
 
                 }
 
-                activity.getAllProductsFromDBSuccessfully(prodList)
+                when(activity){
+                    is CartActivity -> {
+                        activity.getAllProductsFromDBSuccessfully(prodList)
+                    }
+                    is CheckoutActivity -> {
+                        activity.succestGetProductList(prodList)
+                    }
+                }
+
 
             }.addOnFailureListener {
 
@@ -372,6 +387,25 @@ fun addProductToCart(activity: ProductWindowActivity, cart_product: Cart_Product
                         context.updateCartFailed()
                     }
                 }
+            }
+
+    }
+
+
+    fun placeOrder(activity: CheckoutActivity, order: Order){
+
+        db.collection("orders")
+            .document()
+            .set(order, SetOptions.merge())
+            .addOnSuccessListener {
+
+                activity.placeOrderSuccessfully()
+
+            }
+            .addOnFailureListener {
+
+                activity.placeOrderFailed()
+
             }
 
     }

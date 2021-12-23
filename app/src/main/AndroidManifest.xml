@@ -12,9 +12,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AndroidOnlineStore">
         <activity
+            android:name=".project.activities.CheckoutActivity"
+            android:exported="false" />
+        <activity
             android:name=".project.activities.CartActivity"
             android:exported="false"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".project.activities.ProductWindowActivity"
             android:exported="false"
