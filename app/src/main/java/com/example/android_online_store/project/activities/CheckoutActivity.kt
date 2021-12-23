@@ -142,7 +142,14 @@ class CheckoutActivity : AppCompatActivity() {
     }
 
     fun placeOrderSuccessfully(){
+        FirestoreController().update(this, mCartProductsList)
+    }
 
+    fun placeOrderFailed(){
+        Toast.makeText(this, "The order was not placed !", Toast.LENGTH_SHORT).show();
+    }
+
+    fun updateSuccessfully(){
         Toast.makeText(this, "The order was placed successfully", Toast.LENGTH_SHORT).show();
 
         val intent = Intent(this@CheckoutActivity, DashboardActivity::class.java)
@@ -151,8 +158,8 @@ class CheckoutActivity : AppCompatActivity() {
         finish()
     }
 
-    fun placeOrderFailed(){
-        Toast.makeText(this, "The order was not placed !", Toast.LENGTH_SHORT).show();
+    fun updateFailed(){
+        Toast.makeText(this, "Update failed !", Toast.LENGTH_SHORT).show();
     }
 
 }

@@ -410,5 +410,39 @@ fun addProductToCart(activity: ProductWindowActivity, cart_product: Cart_Product
 
     }
 
+    fun update(activity: CheckoutActivity, cartList: ArrayList<Cart_Product>){
+
+        val outBatch = db.batch();
+
+        for(cartProduct in cartList){
+
+            val product = HashMap<String,Any>()
+
+            product["quantity"] = (cartProduct.prod_quantity.toInt() - cartProduct.cart_quantity.toInt()).toString()
+
+            val ref = db.collection("products")
+                .document(cartProduct.product_id)
+
+            outBatch.update(ref,product)
+
+        }
+
+        for(cartProduct in cartList){
+
+            val ref = db.collection("cart_items")
+                .document(cartProduct.id)
+
+            outBatch.delete(ref)
+
+        }
+
+        outBatch.commit().addOnSuccessListener {
+            activity.updateSuccessfully()
+        }.addOnFailureListener {
+            activity.updateFailed()
+        }
+
+    }
+
 
 }
