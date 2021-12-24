@@ -444,5 +444,28 @@ fun addProductToCart(activity: ProductWindowActivity, cart_product: Cart_Product
 
     }
 
+    fun getOrders(activity: MyOrdersActivity){
+        db.collection("orders")
+            .whereEqualTo("user_id",getId())
+            .get()
+            .addOnSuccessListener { document ->
+                val list: ArrayList<Order> = ArrayList()
+
+                for(index in document.documents){
+
+                    val orderItem = index.toObject(Order::class.java)!!
+                    orderItem.id = index.id
+
+                    list.add(orderItem)
+
+                }
+
+            activity.getOrdersInUI(list)
+
+            }.addOnFailureListener {
+            activity.getOrdersFail()
+            }
+    }
+
 
 }
