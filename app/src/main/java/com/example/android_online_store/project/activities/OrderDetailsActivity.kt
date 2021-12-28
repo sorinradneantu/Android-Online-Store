@@ -45,10 +45,16 @@ class OrderDetailsActivity : AppCompatActivity() {
         val cartListAdapter = CartListAdapter(this@OrderDetailsActivity, orderDetails.items, false)
         findViewById<RecyclerView>(R.id.rv_my_order_items_list).adapter = cartListAdapter
 
+        val sharedPreferences = this.getSharedPreferences("shopPreferences", MODE_PRIVATE)
+        val firstname = sharedPreferences.getString("firstname_logged", "")
+        val lastname = sharedPreferences.getString("lastname_logged", "")
+        val email = sharedPreferences.getString("email_logged", "")
+        val phoneNumber = sharedPreferences.getString("phoneNr_logged", "")
+
         findViewById<TextView>(R.id.tv_order_details_address).text = orderDetails.address
-        findViewById<TextView>(R.id.tv_order_details_full_name).text = "SorinTest"
-        findViewById<TextView>(R.id.tv_order_details_email).text = "SorinTest"
-        findViewById<TextView>(R.id.tv_order_details_mobile_number).text = "SorinTest"
+        findViewById<TextView>(R.id.tv_order_details_full_name).text = firstname + " " + lastname
+        findViewById<TextView>(R.id.tv_order_details_email).text = email
+        findViewById<TextView>(R.id.tv_order_details_mobile_number).text = phoneNumber
 
         findViewById<TextView>(R.id.tv_order_details_shipping_charge).text = orderDetails.shipping_charge
         findViewById<TextView>(R.id.tv_order_details_sub_total).text = orderDetails.sub_total_amount

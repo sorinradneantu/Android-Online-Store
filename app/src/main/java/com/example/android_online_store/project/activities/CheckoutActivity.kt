@@ -16,6 +16,7 @@ import com.example.android_online_store.project.controllers.FirestoreController
 import com.example.android_online_store.project.models.Cart_Product
 import com.example.android_online_store.project.models.Order
 import com.example.android_online_store.project.models.Product
+import kotlinx.android.parcel.RawValue
 
 class CheckoutActivity : AppCompatActivity() {
 

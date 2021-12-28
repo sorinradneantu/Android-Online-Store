@@ -55,7 +55,8 @@
                 android:paddingBottom="2dp"
                 android:text="Order Details"
                 android:textColor="@color/black"
-                android:textSize="14sp" />
+                android:textSize="14sp"
+                android:textStyle="bold" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -133,7 +134,8 @@
                         android:text="Delivered"
                         android:textAlignment="center"
                         android:textColor="@color/black"
-                        android:textSize="18sp" />
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
                 </LinearLayout>
             </LinearLayout>
 
@@ -147,7 +149,8 @@
                 android:paddingBottom="2dp"
                 android:text="Products"
                 android:textColor="@color/black"
-                android:textSize="14sp" />
+                android:textSize="14sp"
+                android:textStyle="bold" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_my_order_items_list"
@@ -165,7 +168,8 @@
                 android:paddingBottom="2dp"
                 android:text="Address"
                 android:textColor="@color/black"
-                android:textSize="14sp" />
+                android:textSize="14sp"
+                android:textStyle="bold" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -226,7 +230,8 @@
                 android:paddingBottom="2dp"
                 android:text="Products Receipt"
                 android:textColor="@color/black"
-                android:textSize="14sp" />
+                android:textSize="14sp"
+                android:textStyle="bold" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -323,7 +328,8 @@
                     android:layout_weight="1"
                     android:text="Payment mode"
                     android:textColor="@color/black"
-                    android:textSize="16sp" />
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:layout_width="wrap_content"
