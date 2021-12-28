@@ -1,5 +1,6 @@
 package com.example.android_online_store.project.activities
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -7,9 +8,11 @@ import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.android_online_store.R
+import com.example.android_online_store.project.adapters.AllProductsListAdapter
 import com.example.android_online_store.project.adapters.MyOrdersAdapter
 import com.example.android_online_store.project.controllers.FirestoreController
 import com.example.android_online_store.project.models.Order
+import com.example.android_online_store.project.models.Product
 
 class MyOrdersActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

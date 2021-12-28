@@ -16,7 +16,6 @@ import com.example.android_online_store.project.controllers.FirestoreController
 import com.example.android_online_store.project.models.Cart_Product
 import com.example.android_online_store.project.models.Order
 import com.example.android_online_store.project.models.Product
-import com.google.firebase.storage.FirebaseStorage
 
 class CheckoutActivity : AppCompatActivity() {
 
@@ -134,7 +133,8 @@ class CheckoutActivity : AppCompatActivity() {
             mCartProductsList[0].image,
             mSubTotal.toString(),
             "12.0 $",
-            mTotalAmount.toString()
+            mTotalAmount.toString(),
+            System.currentTimeMillis()
         )
 
         FirestoreController().placeOrder(this, order);
