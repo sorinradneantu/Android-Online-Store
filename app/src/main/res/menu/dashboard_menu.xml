@@ -7,9 +7,10 @@
         android:title="Cart"
         app:showAsAction="always" />
 
-    <item android:id="@+id/action_settings"
-    android:icon="@drawable/ic_baseline_settings_applications_24"
-    android:title="Settings"
+    <item
+        android:id="@+id/my_orders"
+        android:icon="@drawable/ic_baseline_list_alt_24"
+        android:title="MyOrders"
         app:showAsAction="always" />
 
 

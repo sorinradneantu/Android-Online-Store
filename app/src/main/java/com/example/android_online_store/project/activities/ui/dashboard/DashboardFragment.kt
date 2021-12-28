@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.android_online_store.R
 import com.example.android_online_store.databinding.FragmentDashboardBinding
 import com.example.android_online_store.project.activities.CartActivity
+import com.example.android_online_store.project.activities.MyOrdersActivity
 import com.example.android_online_store.project.activities.ProductWindowActivity
 import com.example.android_online_store.project.activities.SettingsActivity
 import com.example.android_online_store.project.adapters.AllProductsListAdapter
@@ -67,9 +68,9 @@ class DashboardFragment : Fragment() {
         val id = item.itemId
 
         when(id){
-            R.id.action_settings -> {
+            R.id.my_orders -> {
 
-                startActivity(Intent(activity, SettingsActivity::class.java))
+                startActivity(Intent(activity, MyOrdersActivity::class.java))
 
                 return true
 
