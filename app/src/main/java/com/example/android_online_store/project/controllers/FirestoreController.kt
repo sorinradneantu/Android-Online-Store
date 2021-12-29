@@ -11,10 +11,7 @@ import androidx.fragment.app.Fragment
 import com.example.android_online_store.project.activities.*
 import com.example.android_online_store.project.activities.ui.dashboard.DashboardFragment
 import com.example.android_online_store.project.activities.ui.products.ProductsFragment
-import com.example.android_online_store.project.models.Cart_Product
-import com.example.android_online_store.project.models.Order
-import com.example.android_online_store.project.models.Product
-import com.example.android_online_store.project.models.User
+import com.example.android_online_store.project.models.*
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.SetOptions
@@ -410,9 +407,32 @@ fun addProductToCart(activity: ProductWindowActivity, cart_product: Cart_Product
 
     }
 
-    fun update(activity: CheckoutActivity, cartList: ArrayList<Cart_Product>){
+    fun update(activity: CheckoutActivity, cartList: ArrayList<Cart_Product>, order: Order){
 
         val outBatch = db.batch();
+
+        for(cartProduct in cartList){
+
+         val soldProduct = SoldProduct(
+             cartProduct.product_owner_id,
+             cartProduct.product_name,
+             cartProduct.price,
+             cartProduct.cart_quantity,
+             cartProduct.image,
+             order.details,
+             order.date,
+             order.sub_total_amount,
+             order.shipping_charge,
+             order.total_amount,
+             order.address
+         )
+
+            val ref = db.collection("sold_products")
+                .document(cartProduct.product_id)
+
+            outBatch.set(ref,soldProduct)
+
+        }
 
         for(cartProduct in cartList){
 
@@ -427,13 +447,11 @@ fun addProductToCart(activity: ProductWindowActivity, cart_product: Cart_Product
 
         }
 
-        for(cartProduct in cartList){
+        for (cartProduct in cartList) {
 
             val ref = db.collection("cart_items")
                 .document(cartProduct.id)
-
             outBatch.delete(ref)
-
         }
 
         outBatch.commit().addOnSuccessListener {
@@ -465,6 +483,31 @@ fun addProductToCart(activity: ProductWindowActivity, cart_product: Cart_Product
             }.addOnFailureListener {
             activity.getOrdersFail()
             }
+    }
+
+    fun getSoldProductsList(activity: SoldProductActivity) {
+        db.collection("sold_products")
+            .whereEqualTo("user_id", getId())
+            .get()
+            .addOnSuccessListener { document ->
+
+                val list: ArrayList<SoldProduct> = ArrayList()
+
+                for (index in document.documents) {
+
+                    val soldProduct = index.toObject(SoldProduct::class.java)!!
+                    soldProduct.id = index.id
+
+                    list.add(soldProduct)
+                }
+
+                activity.successSoldProductsList(list)
+            }
+            .addOnFailureListener {
+
+                activity.failSoldProductsList()
+            }
+
     }
 
 

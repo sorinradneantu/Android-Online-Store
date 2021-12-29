@@ -13,5 +13,11 @@
         android:title="MyOrders"
         app:showAsAction="always" />
 
+    <item
+        android:id="@+id/sold_products"
+        android:icon="@drawable/ic_baseline_library_add_check_24"
+        android:title="MyOrders"
+        app:showAsAction="always" />
+
 
 </menu>

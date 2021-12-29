@@ -24,6 +24,7 @@ class CheckoutActivity : AppCompatActivity() {
     private lateinit var mCartProductsList : ArrayList<Cart_Product>
     private var mSubTotal: Double = 0.0
     private var mTotalAmount: Double = 0.0
+    private lateinit var mOrderDetails : Order
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -126,7 +127,7 @@ class CheckoutActivity : AppCompatActivity() {
         val address = sharedPreferences.getString("address_logged", "")
         val phoneNumber = sharedPreferences.getString("phoneNr_logged", "")
 
-        val order = Order(
+        mOrderDetails = Order(
             FirestoreController().getId(),
             mCartProductsList,
             address!!,
@@ -138,12 +139,12 @@ class CheckoutActivity : AppCompatActivity() {
             System.currentTimeMillis()
         )
 
-        FirestoreController().placeOrder(this, order);
+        FirestoreController().placeOrder(this, mOrderDetails);
 
     }
 
     fun placeOrderSuccessfully(){
-        FirestoreController().update(this, mCartProductsList)
+        FirestoreController().update(this, mCartProductsList, mOrderDetails)
     }
 
     fun placeOrderFailed(){
