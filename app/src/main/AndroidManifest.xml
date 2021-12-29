@@ -12,6 +12,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AndroidOnlineStore">
         <activity
+            android:name=".project.activities.SoldProductDetailsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".project.activities.SoldProductActivity"
+            android:exported="false" />
+        <activity
             android:name=".project.activities.OrderDetailsActivity"
             android:exported="false" />
         <activity

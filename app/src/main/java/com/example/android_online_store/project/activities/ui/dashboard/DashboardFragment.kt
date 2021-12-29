@@ -9,10 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.android_online_store.R
 import com.example.android_online_store.databinding.FragmentDashboardBinding
-import com.example.android_online_store.project.activities.CartActivity
-import com.example.android_online_store.project.activities.MyOrdersActivity
-import com.example.android_online_store.project.activities.ProductWindowActivity
-import com.example.android_online_store.project.activities.SettingsActivity
+import com.example.android_online_store.project.activities.*
 import com.example.android_online_store.project.adapters.AllProductsListAdapter
 import com.example.android_online_store.project.controllers.FirestoreController
 import com.example.android_online_store.project.models.Product
@@ -77,6 +74,10 @@ class DashboardFragment : Fragment() {
             }
             R.id.action_cart -> {
                 startActivity(Intent(activity, CartActivity::class.java))
+                return true
+            }
+            R.id.sold_products -> {
+                startActivity(Intent(activity, SoldProductActivity::class.java))
                 return true
             }
         }

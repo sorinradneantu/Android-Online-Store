@@ -19,6 +19,8 @@ class ProductWindowActivity : AppCompatActivity() {
 
     private var prodId: String = ""
 
+    var productOwnerId: String = ""
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_product_window)
@@ -27,7 +29,6 @@ class ProductWindowActivity : AppCompatActivity() {
             prodId = intent.getStringExtra("ProductID")!!
         }
 
-        var productOwnerId: String = ""
 
         if(intent.hasExtra("OwnerID")){
             productOwnerId = intent.getStringExtra("OwnerID")!!
@@ -97,7 +98,7 @@ class ProductWindowActivity : AppCompatActivity() {
 */
     private fun addProductToCart(){
 
-        val cart_prod = Cart_Product(FirestoreController().getId(), prodId, prodDetails.product_name, prodDetails.price, prodDetails.image, "1")
+        val cart_prod = Cart_Product(FirestoreController().getId(),productOwnerId, prodId, prodDetails.product_name, prodDetails.price, prodDetails.image, "1")
         FirestoreController().addProductToCart(this, cart_prod)
 
     }
