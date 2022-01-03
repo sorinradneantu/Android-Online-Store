@@ -4,16 +4,17 @@ import android.content.Context.MODE_PRIVATE
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.android_online_store.R
 import com.example.android_online_store.databinding.FragmentUserprofileBinding
+import com.example.android_online_store.project.activities.CartActivity
 import com.example.android_online_store.project.activities.LoginActivity
+import com.example.android_online_store.project.activities.MyOrdersActivity
+import com.example.android_online_store.project.activities.SoldProductActivity
 import com.google.firebase.auth.FirebaseAuth
 
 
@@ -27,6 +28,11 @@ class UserProfileFragment : Fragment() {
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
+
+    override fun onCreate(savedInstanceState: Bundle?){
+        super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -69,6 +75,35 @@ class UserProfileFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.dashboard_menu,menu)
+        super.onCreateOptionsMenu(menu, inflater)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+
+        val id = item.itemId
+
+        when(id){
+            R.id.my_orders -> {
+
+                startActivity(Intent(activity, MyOrdersActivity::class.java))
+
+                return true
+
+            }
+            R.id.action_cart -> {
+                startActivity(Intent(activity, CartActivity::class.java))
+                return true
+            }
+            R.id.sold_products -> {
+                startActivity(Intent(activity, SoldProductActivity::class.java))
+                return true
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 
     private fun signOut(){
