@@ -60,6 +60,9 @@ class UserProfileFragment : Fragment() {
         val signOutButton: Button = binding.signoutbtn
         signOutButton.setOnClickListener{ signOut() }
 
+        val resetPwButton: Button = binding.resetPasswordButton
+        resetPwButton.setOnClickListener { resetPassword(email.toString()) }
+
         return root
     }
 
@@ -81,6 +84,17 @@ class UserProfileFragment : Fragment() {
         }
         startActivity(loginActivity)
         activity?.finish()
+    }
+
+    private fun resetPassword(email: String){
+        FirebaseAuth.getInstance().sendPasswordResetEmail(email).addOnCompleteListener {
+                task ->
+            if(task.isSuccessful){
+                Toast.makeText(activity, "An email was sent to "+email+" !", Toast.LENGTH_SHORT).show();
+            }else{
+                Toast.makeText(activity, "Sending email failed : "+task.exception!!.message.toString(), Toast.LENGTH_SHORT).show();
+            }
+        }
     }
 
 }
