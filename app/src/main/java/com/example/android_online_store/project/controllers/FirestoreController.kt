@@ -204,6 +204,7 @@ class FirestoreController {
 
     fun getAllProductsList(fragment: DashboardFragment){
         db.collection("products")
+            .whereNotEqualTo("owner_id",getId())
             .get()
             .addOnSuccessListener { document ->
 
