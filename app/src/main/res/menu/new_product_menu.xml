@@ -2,6 +2,23 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <item android:id="@+id/action_cart"
+        android:icon="@drawable/ic_baseline_shopping_cart_24"
+        android:title="Cart"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/my_orders"
+        android:icon="@drawable/ic_baseline_list_alt_24"
+        android:title="MyOrders"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/sold_products"
+        android:icon="@drawable/ic_baseline_library_add_check_24"
+        android:title="MyOrders"
+        app:showAsAction="always" />
+
     <item android:id="@+id/action_newproduct"
         android:icon="@drawable/ic_baseline_add_box_24"
         android:title="Add new product"

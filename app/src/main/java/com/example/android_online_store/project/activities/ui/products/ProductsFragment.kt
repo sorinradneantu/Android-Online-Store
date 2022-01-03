@@ -12,8 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.android_online_store.R
 import com.example.android_online_store.databinding.FragmentProductsBinding
-import com.example.android_online_store.project.activities.NewProductActivity
-import com.example.android_online_store.project.activities.SettingsActivity
+import com.example.android_online_store.project.activities.*
 import com.example.android_online_store.project.adapters.ProductsListAdapter
 import com.example.android_online_store.project.controllers.FirestoreController
 import com.example.android_online_store.project.models.Product
@@ -53,6 +52,8 @@ class ProductsFragment : Fragment() {
         _binding = null
     }
 
+
+
     override fun onResume(){
         super.onResume()
         getProdListFromDB()
@@ -75,6 +76,23 @@ class ProductsFragment : Fragment() {
                 return true
 
             }
+
+            R.id.my_orders -> {
+
+                startActivity(Intent(activity, MyOrdersActivity::class.java))
+
+                return true
+
+            }
+            R.id.action_cart -> {
+                startActivity(Intent(activity, CartActivity::class.java))
+                return true
+            }
+            R.id.sold_products -> {
+                startActivity(Intent(activity, SoldProductActivity::class.java))
+                return true
+            }
+
         }
         return super.onOptionsItemSelected(item)
     }
