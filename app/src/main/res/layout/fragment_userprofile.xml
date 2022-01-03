@@ -132,6 +132,12 @@
                 android:layout_height="wrap_content"
                 android:text="LOG OUT" />
 
+            <Button
+                android:id="@+id/resetPasswordButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="reset password" />
+
             <Space
                 android:layout_width="match_parent"
                 android:layout_height="109dp" />
