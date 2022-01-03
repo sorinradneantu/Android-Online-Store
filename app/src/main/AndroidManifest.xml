@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AndroidOnlineStore">
         <activity
+            android:name=".project.activities.ForgotPasswordActivity"
+            android:exported="false" />
+        <activity
             android:name=".project.activities.SoldProductDetailsActivity"
             android:exported="false" />
         <activity

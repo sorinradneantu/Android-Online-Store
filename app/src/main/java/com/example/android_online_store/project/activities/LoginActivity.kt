@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import com.example.android_online_store.R
 import com.example.android_online_store.project.controllers.FirestoreController
@@ -21,6 +22,11 @@ class LoginActivity : AppCompatActivity() {
 
         val loginButton = findViewById<Button>(R.id.loginButton)
         loginButton.setOnClickListener { login() }
+
+        val forgotPasswordButton = findViewById<TextView>(R.id.forgotPassword)
+        forgotPasswordButton.setOnClickListener{
+            forgotPassword()
+        }
 
     }
 
@@ -71,6 +77,14 @@ class LoginActivity : AppCompatActivity() {
 
     fun loginFailed(){
 
+    }
+
+    fun forgotPassword(){
+        val forgotPwActivity = Intent(this, ForgotPasswordActivity::class.java).apply {
+
+        }
+        startActivity(forgotPwActivity)
+        finish()
     }
 
 
