@@ -58,6 +58,7 @@ class ProductWindowActivity : AppCompatActivity() {
     fun getDetailsSuccess(product: Product){
         GlideLoader(this@ProductWindowActivity).loadProdImage(product.image,findViewById<ImageView>(R.id.iv_product_detail_image))
 
+        findViewById<TextView>(R.id.owner_name).text = product.owner_name
         findViewById<TextView>(R.id.tv_product_name).text = product.product_name
         findViewById<TextView>(R.id.tv_product_price).text = "${product.price} $"
         findViewById<TextView>(R.id.tv_product_description).text = product.description
