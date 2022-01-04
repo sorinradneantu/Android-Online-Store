@@ -12,5 +12,5 @@ class Product(
 
     //owner attributes
     val owner_id: String = "",
-    val owner_name: String = "",
+    val owner_name: String = ""
 )

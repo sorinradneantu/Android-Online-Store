@@ -87,6 +87,10 @@ class FirestoreController {
                     "username_logged",
                     "${user.firstName} ${user.lastName}"
                 )
+                editor.putString(
+                    "grade",
+                    "${user.grade}"
+                )
                 editor.apply()
 
                 when(activity){
@@ -511,5 +515,48 @@ fun addProductToCart(activity: ProductWindowActivity, cart_product: Cart_Product
 
     }
 
+    fun updateGrade(activity: ProductWindowActivity,userID: String,itemHashMap: HashMap<String, Any>){
+
+        db.collection("users")
+            .document(userID)
+            .update(itemHashMap).addOnSuccessListener {
+
+                        activity.updateGradeSuccessfully()
+
+            }.addOnFailureListener {
+
+                      activity.updateGradeFailed()
+
+
+            }
+
+
+    }
+
+    /*
+    fun getOwnerGrade(activity: ProductWindowActivity,ownerID: String){
+
+        db.collection("users")
+            .document(ownerID)
+            .get()
+            .addOnSuccessListener {
+                    document ->
+
+                val user = document.toObject(User::class.java)!!
+
+                val sharedPreferences = activity.getSharedPreferences("OwnerGrade",MODE_PRIVATE)
+
+                val editor: SharedPreferences.Editor = sharedPreferences.edit()
+                editor.putString(
+                    "grade",
+                    "${user.grade}"
+                )
+                editor.apply()
+            }.addOnFailureListener {
+
+            }
+
+    }
+*/
 
 }

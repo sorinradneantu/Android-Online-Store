@@ -1,6 +1,6 @@
 package com.example.android_online_store.project.models
 
-class User(val firstName:String = "", val lastName:String = "", val email:String = "", val phoneNumber:String = "", val address:String = "",val id:String = "") {
+class User(val firstName:String = "", val lastName:String = "", val email:String = "", val phoneNumber:String = "", val address:String = "",val id:String = "",val grade:String = "10") {
 
     override fun toString(): String {
         return "User(firstName='$firstName', lastName='$lastName', email='$email', phoneNumber='$phoneNumber', address='$address', id='$id')"
