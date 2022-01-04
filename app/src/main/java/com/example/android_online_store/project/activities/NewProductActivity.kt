@@ -186,7 +186,7 @@ class NewProductActivity : AppCompatActivity(), View.OnClickListener {
         val quantityBox = findViewById<EditText>(R.id.quantityInput)
 
         val username = this.getSharedPreferences("shopPreferences", MODE_PRIVATE).getString("username_logged","")
-
+        val ownerGrade = this.getSharedPreferences("shopPreferences", MODE_PRIVATE).getString("grade","")
 
         val user_id = FirestoreController().getId()
 

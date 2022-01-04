@@ -51,6 +51,7 @@ class UserProfileFragment : Fragment() {
         val email = sharedPreferences.getString("email_logged", "")
         val address = sharedPreferences.getString("address_logged", "")
         val phoneNumber = sharedPreferences.getString("phoneNr_logged", "")
+        val grade = sharedPreferences.getString("grade","")
 
         val firstNameTextView: TextView = binding.firstnameshow
         firstNameTextView.text = firstname
@@ -62,6 +63,8 @@ class UserProfileFragment : Fragment() {
         addressTextView.text = address
         val phoneNrTextView: TextView = binding.phonenrshow
         phoneNrTextView.text = phoneNumber
+        val gradeTextView: TextView = binding.gradeshow
+        gradeTextView.text = grade
 
         val signOutButton: Button = binding.signoutbtn
         signOutButton.setOnClickListener{ signOut() }
