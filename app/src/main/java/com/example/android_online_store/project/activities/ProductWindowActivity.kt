@@ -172,7 +172,7 @@ class ProductWindowActivity : AppCompatActivity() {
                     if(document != null){
                         val currentOwnerGrade = document.data?.get("grade")
 
-                        itemHashMap["grade"] = (newGrade + currentOwnerGrade.toString().toDouble())/2
+                        itemHashMap["grade"] = ((newGrade + currentOwnerGrade.toString().toDouble())/2).toString()
                         FirestoreController().updateGrade(this@ProductWindowActivity,productOwnerId, itemHashMap)
                     }else{
 
